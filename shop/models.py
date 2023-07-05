@@ -12,6 +12,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
+    slug = models.SlugField()
     description = models.TextField()
     price = models.DecimalField(max_digits=9, decimal_places=2)
     quantity = models.IntegerField()
@@ -33,6 +34,12 @@ class Customer(models.Model):
     birthdate = models.DateField(null=True)
     membership = models.CharField(max_length=1 , choices = MEMBERSHIP_CHOICES, default='B')
 
+    class Meta:
+        db_table = 'store_customers'
+        indexes = [
+            models.Index(fields = ['first_name', 'last_name'])
+            ]
+    
 
 class Order(models.Model):
     PAYMENT_STATUS = [

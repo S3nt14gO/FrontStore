@@ -9,7 +9,14 @@
     {% if user == 'Ahmed' %}
     <h1>This is a template {{user}}</h1>
     {%else %}
-    <h1>Hi nooby </h1>
+    <h1>Hi {{user}} </h1>
     {% endif %}
+
+    <ul>
+        {% for product in productss %}
+            <li>{{product}} </li>
+        {% endfor %}
+    </ul>
+    <h1>{{ results }}</h1>
 </body>
 </html>
